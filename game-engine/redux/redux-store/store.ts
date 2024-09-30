@@ -1,7 +1,11 @@
 import { configureStore } from '@reduxjs/toolkit';
 
+import battlefieldReducer from '@/game-engine/redux/redux-slices/battlefield-slice/battlefieldSlice';
+
 export const store = configureStore({
-    reducer: {},
+    reducer: {
+        battleField: battlefieldReducer,
+    },
 });
 
 export type RootState = ReturnType<typeof store.getState>;
