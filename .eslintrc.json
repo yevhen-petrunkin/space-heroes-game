@@ -6,7 +6,6 @@
         "plugin:@typescript-eslint/recommended",
         "plugin:react/recommended"
     ],
-    "ignorePatterns": ["**/tsconfig.json", "**/.eslintrc.json", "**/package.json"],
     "parser": "@typescript-eslint/parser",
     "parserOptions": {
         "ecmaFeatures": {
@@ -89,7 +88,15 @@
         {
             "files": ["*.json"],
             "rules": {
-                "jsx-quotes": "off"
+                "quotes": [
+                    "error",
+                    "double",
+                    {
+                        "allowTemplateLiterals": false
+                    }
+                ],
+                "jsx-quotes": ["error", "prefer-double"],
+                "@typescript-eslint/no-unused-expressions": "off"
             }
         }
     ]
