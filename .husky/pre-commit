@@ -7,19 +7,19 @@
 echo 'Starting...'
 
 # Formatting
-yarn format 
-yarn lint:quiet
+npm run format 
+npm run lint:quiet
 
 
 # Check Prettier standards
-yarn check-format ||
+npm run check-format ||
 (
     echo 'Prettier Check Failed. Run yarn format and try commit again.';
     false;
 )
 
 # Check ESLint Standards
-yarn lint:quiet ||
+npm run lint:quiet ||
 (
         echo 'ESLint Check Failed. Make the required changes listed above and try to commit again.'
         false;
@@ -28,7 +28,7 @@ yarn lint:quiet ||
 # If everything passes... Now we can commit
 echo 'Code looks good to me... Run test-all script'
 
-yarn test-all ||
+npm run test-all ||
 (
     echo 'Next build failed: View the errors above to see why.'
     false;
