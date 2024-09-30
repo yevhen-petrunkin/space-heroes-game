@@ -20,8 +20,7 @@
         "@typescript-eslint",
         "eslint-plugin-react",
         "eslint-plugin-react-hooks",
-        "eslint-plugin-simple-import-sort",
-        "@stylistic"
+        "eslint-plugin-simple-import-sort"
     ],
     "rules": {
         "simple-import-sort/imports": "error",
@@ -31,7 +30,6 @@
         "import/no-duplicates": "error",
         "import/no-cycle": "warn",
         "indent": ["off"],
-        "@stylistic/indent": ["error", 4],
         "@typescript-eslint/no-explicit-any": "warn",
         "react/jsx-indent": ["error", 4],
         "react/jsx-indent-props": ["error", 4],
@@ -57,9 +55,10 @@
             }
         ],
         "react/require-default-props": [
-            "error",
+            "off",
             {
-                "ignoreFunctionalComponents": true
+                "ignoreFunctionalComponents": true,
+                "functions": "ignore"
             }
         ],
         "react/jsx-props-no-spreading": ["off"],
