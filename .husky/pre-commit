@@ -8,7 +8,7 @@ echo 'Starting...'
 
 # Formatting
 npm run format 
-npm run lint:quiet
+npm run lint
 
 
 # Check Prettier standards
@@ -19,7 +19,7 @@ npm run check-format ||
 )
 
 # Check ESLint Standards
-npm run lint:quiet ||
+npm run lint ||
 (
         echo 'ESLint Check Failed. Make the required changes listed above and try to commit again.'
         false;

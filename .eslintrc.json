@@ -64,12 +64,7 @@
             }
         ],
         "react/jsx-props-no-spreading": ["off"],
-        "import/no-extraneous-dependencies": [
-            "warn",
-            {
-                "devDependencies": ["**/*.stories.tsx"]
-            }
-        ],
+        "import/no-extraneous-dependencies": "off",
         "react/function-component-definition": [
             "warn",
             {

@@ -3,6 +3,8 @@ import './globals.css';
 import type { Metadata } from 'next';
 import { Noto_Sans } from 'next/font/google';
 
+import ReduxClient from '@/game-engine/clients/redux-client/ReduxClient';
+
 const notoSans = Noto_Sans({ subsets: ['latin', 'cyrillic'], style: ['normal', 'italic'] });
 
 export const metadata: Metadata = {
@@ -18,7 +20,9 @@ export default function RootLayout({
 }>) {
     return (
         <html lang='en'>
-            <body className={`${notoSans.className} antialiased`}>{children}</body>
+            <body className={`${notoSans.className} antialiased`}>
+                <ReduxClient>{children}</ReduxClient>
+            </body>
         </html>
     );
 }
