@@ -1,0 +1,101 @@
+{
+    "extends": [
+        "next/core-web-vitals",
+        "next/typescript",
+        "eslint:recommended",
+        "plugin:@typescript-eslint/recommended",
+        "plugin:react/recommended"
+    ],
+    "ignorePatterns": ["**/tsconfig.json", "**/.eslintrc.json", "**/package.json"],
+    "parser": "@typescript-eslint/parser",
+    "parserOptions": {
+        "ecmaFeatures": {
+            "jsx": true
+        },
+        "ecmaVersion": "latest",
+        "sourceType": "module",
+        "project": ["**/.tsconfig.json"]
+    },
+    "plugins": [
+        "eslint-plugin-import",
+        "@typescript-eslint",
+        "eslint-plugin-react",
+        "eslint-plugin-react-hooks",
+        "eslint-plugin-simple-import-sort",
+        "@stylistic"
+    ],
+    "rules": {
+        "simple-import-sort/imports": "error",
+        "simple-import-sort/exports": "error",
+        "import/first": "error",
+        "import/newline-after-import": "error",
+        "import/no-duplicates": "error",
+        "import/no-cycle": "warn",
+        "indent": ["off"],
+        "@stylistic/indent": ["error", 4],
+        "@typescript-eslint/no-explicit-any": "warn",
+        "react/jsx-indent": ["error", 4],
+        "react/jsx-indent-props": ["error", 4],
+        "no-console": "warn",
+        "react/prop-types": "off",
+        "quotes": [
+            "error",
+            "single",
+            {
+                "allowTemplateLiterals": true
+            }
+        ],
+        "jsx-quotes": ["error", "prefer-single"],
+        "max-len": [
+            "error",
+            {
+                "code": 120,
+                "ignoreUrls": true,
+                "ignoreStrings": true,
+                "ignoreTemplateLiterals": true,
+                "ignoreRegExpLiterals": true,
+                "ignoreComments": true
+            }
+        ],
+        "react/require-default-props": [
+            "error",
+            {
+                "ignoreFunctionalComponents": true
+            }
+        ],
+        "react/jsx-props-no-spreading": ["off"],
+        "import/no-extraneous-dependencies": [
+            "warn",
+            {
+                "devDependencies": ["**/*.stories.tsx"]
+            }
+        ],
+        "react/function-component-definition": [
+            "warn",
+            {
+                "namedComponents": "arrow-function",
+                "unnamedComponents": "arrow-function"
+            }
+        ],
+        "import/prefer-default-export": ["warn"],
+        "no-unused-vars": "off",
+        "@typescript-eslint/no-unused-vars": "error",
+        "no-param-reassign": [
+            "error",
+            {
+                "props": true,
+                "ignorePropertyModificationsFor": ["state"]
+            }
+        ],
+        "react-hooks/rules-of-hooks": "error",
+        "react/react-in-jsx-scope": "off"
+    },
+    "overrides": [
+        {
+            "files": ["*.json"],
+            "rules": {
+                "jsx-quotes": "off"
+            }
+        }
+    ]
+}

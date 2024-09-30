@@ -1,0 +1,38 @@
+#!/usr/bin/env sh
+. "$(dirname -- "$0")/_/husky.sh"
+
+#!/bin/sh
+. "$(dirname "$0")/_/husky.sh"
+
+echo 'Starting...'
+
+# Formatting
+yarn format 
+yarn lint:quiet
+
+
+# Check Prettier standards
+yarn check-format ||
+(
+    echo 'Prettier Check Failed. Run yarn format and try commit again.';
+    false;
+)
+
+# Check ESLint Standards
+yarn lint:quiet ||
+(
+        echo 'ESLint Check Failed. Make the required changes listed above and try to commit again.'
+        false;
+)
+
+# If everything passes... Now we can commit
+echo 'Code looks good to me... Run test-all script'
+
+yarn test-all ||
+(
+    echo 'Next build failed: View the errors above to see why.'
+    false;
+)
+
+# If everything passes... Now we can commit
+echo '✅ You win this time... I am committing this now.'
