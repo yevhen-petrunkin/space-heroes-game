@@ -2,6 +2,8 @@ import {
     GridCellDataI,
     GridCellRawDataI,
     GridCellsFullDataParamsI,
+    GridGeometryData,
+    GridGeometryParamsI,
 } from '@/game-engine/lib/types/components/game-content/interactive-elements/gridAndCellsTypes';
 
 /** This function is to get raw data about the cells of a game grid (etc. in the Battlefield)
@@ -68,4 +70,42 @@ export const getGridCellsFullData = ({
 
         return { ...aggr, [cellData.number]: cellData };
     }, {});
+};
+
+/** This function is to get data about the geometry of an existing game grid (etc. in the Battlefield)
+ * @param gridAspectRatio - desired aspect ratio of the grid (width units / height units)
+ * @param horizontalCellsQty - desired quantity of cells in one row of the grid
+ * @param verticalCellsQty - desired quantity of cells in one column of the grid
+ * NB: cellsQty must be divisible by horizontalCellsQty and by verticalCellsQty!
+ * @param unitWidthFactor - optional value which indicates how many cells will a unit occupy horizontally and vertically on the grid (e.g. in the Battlefield)
+ * @param setGridWidth - optional setter function of React useState hook to set the grid width locally in a component
+ * @returns {GridGeometryData} - an object with data on widths and heights of the grid itself and its elements
+ */
+
+export const getGridGeometryData = ({
+    gridAspectRatio,
+    horizontalCellsQty,
+    verticalCellsQty,
+    unitWidthFactor,
+    setGridWidth,
+}: GridGeometryParamsI): GridGeometryData => {
+    const windowWidth = window.innerWidth ?? 1;
+    const windowHeight = window.innerHeight ?? 1;
+    const optimalGridWidth = windowHeight * gridAspectRatio;
+    const gridWidth = windowHeight > windowWidth || windowWidth < optimalGridWidth ? windowWidth : optimalGridWidth;
+    const cellWidth = gridWidth / horizontalCellsQty;
+    let unitWidth = null;
+
+    if (unitWidthFactor !== undefined) unitWidth = cellWidth * unitWidthFactor;
+
+    if (setGridWidth) setGridWidth(gridWidth);
+
+    return {
+        windowWidth,
+        windowHeight,
+        cellWidth,
+        gridWidth,
+        gridHeight: cellWidth * verticalCellsQty,
+        unitWidth,
+    };
 };

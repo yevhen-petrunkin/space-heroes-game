@@ -1,3 +1,5 @@
+import { Dispatch, SetStateAction } from 'react';
+
 export interface GridCellRawDataI {
     id: string;
     idx: number;
@@ -8,6 +10,23 @@ export interface GridCellsFullDataParamsI {
     gridRefChildren: HTMLCollectionOf<HTMLElement>;
     cellsQty: number;
     horizontalCellsQty: number;
+}
+
+export interface GridGeometryParamsI {
+    gridAspectRatio: number;
+    horizontalCellsQty: number;
+    verticalCellsQty: number;
+    unitWidthFactor?: number;
+    setGridWidth?: Dispatch<SetStateAction<number>>;
+}
+
+export interface GridGeometryData {
+    windowWidth: number;
+    windowHeight: number;
+    cellWidth: number;
+    gridWidth: number;
+    gridHeight: number;
+    unitWidth: number | null;
 }
 
 export interface GridCellDataValuesI {
