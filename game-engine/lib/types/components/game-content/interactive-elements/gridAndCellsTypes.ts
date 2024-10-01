@@ -7,12 +7,14 @@ export interface GridCellRawDataI {
 }
 
 export interface GridCellsFullDataParamsI {
-    gridRefChildren: HTMLCollectionOf<HTMLElement>;
+    gridRefChildren: HTMLCollection;
     cellsQty: number;
     horizontalCellsQty: number;
 }
 
 export interface GridGeometryParamsI {
+    windowWidth: number;
+    windowHeight: number;
     gridAspectRatio: number;
     horizontalCellsQty: number;
     verticalCellsQty: number;

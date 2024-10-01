@@ -1,6 +1,7 @@
-import { createSlice } from '@reduxjs/toolkit';
+import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
 import { DEFAULT_UNIT_MOVEMENT_SPEED } from '@/game-engine/lib/constants/components/game-content/interactive-elements/unitConstants';
+import { GridCellDataI } from '@/game-engine/lib/types/components/game-content/interactive-elements/gridAndCellsTypes';
 
 import { BattleFieldInitState } from './battlefieldSlice.types';
 
@@ -15,10 +16,14 @@ const initialState: BattleFieldInitState = {
 export const battlefieldSlice = createSlice({
     name: 'battleField',
     initialState,
-    reducers: {},
+    reducers: {
+        updateGridCellData: (state, action: PayloadAction<GridCellDataI>) => {
+            state.gridCellData = action.payload;
+        },
+    },
 });
 
 // eslint-disable-next-line no-empty-pattern
-export const {} = battlefieldSlice.actions;
+export const { updateGridCellData } = battlefieldSlice.actions;
 
 export default battlefieldSlice.reducer;

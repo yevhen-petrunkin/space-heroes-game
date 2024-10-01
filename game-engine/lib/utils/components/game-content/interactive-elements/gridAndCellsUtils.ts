@@ -73,6 +73,8 @@ export const getGridCellsFullData = ({
 };
 
 /** This function is to get data about the geometry of an existing game grid (etc. in the Battlefield)
+ * @param windowWidth - width of the grid main container (usually equals to window inner width)
+ * @param windowHeight - height of the grid main container (usually equals to window inner height)
  * @param gridAspectRatio - desired aspect ratio of the grid (width units / height units)
  * @param horizontalCellsQty - desired quantity of cells in one row of the grid
  * @param verticalCellsQty - desired quantity of cells in one column of the grid
@@ -83,14 +85,14 @@ export const getGridCellsFullData = ({
  */
 
 export const getGridGeometryData = ({
+    windowWidth,
+    windowHeight,
     gridAspectRatio,
     horizontalCellsQty,
     verticalCellsQty,
     unitWidthFactor,
     setGridWidth,
 }: GridGeometryParamsI): GridGeometryData => {
-    const windowWidth = window.innerWidth ?? 1;
-    const windowHeight = window.innerHeight ?? 1;
     const optimalGridWidth = windowHeight * gridAspectRatio;
     const gridWidth = windowHeight > windowWidth || windowWidth < optimalGridWidth ? windowWidth : optimalGridWidth;
     const cellWidth = gridWidth / horizontalCellsQty;
