@@ -1,11 +1,14 @@
-import { CellRawDataI } from '@/game-engine/lib/types/components/game-content/interactive-elements/gridAndCellsTypes';
+import {
+    GridCellDataI,
+    GridCellRawDataI,
+    GridCellsFullDataParamsI,
+} from '@/game-engine/lib/types/components/game-content/interactive-elements/gridAndCellsTypes';
 
 /** This function is to get raw data about the cells of a game grid (etc. in the Battlefield)
  * @param cellsQty - desired quantity of cells in the grid
- * @returns {CellRawDataI[]} - an array of objects, each containing cell id, cell index in the array (starting from 0), and cell number (starting from 1)
+ * @returns {GridCellRawDataI[]} - an array of objects, each containing cell id, cell index in the array (starting from 0), and cell number (starting from 1)
  */
-// eslint-disable-next-line import/prefer-default-export
-export const getGridCellsRawData = (cellsQty: number): CellRawDataI[] => {
+export const getGridCellsRawData = (cellsQty: number): GridCellRawDataI[] => {
     const arr = [];
     for (let i = 0; i < cellsQty; i += 1) {
         arr.push({
@@ -15,4 +18,54 @@ export const getGridCellsRawData = (cellsQty: number): CellRawDataI[] => {
         });
     }
     return arr;
+};
+
+/** This function is to get full data about the cells of an existing game grid (etc. in the Battlefield)
+ * @param gridRefChildren - html elements of a grid container element, which are going to be used as grid cells
+ * @param cellsQty - desired quantity of cells in the grid
+ * @param horizontalCellsQty - desired quantity of cells in one row of the grid
+ * NB: cellsQty must be divisible by horizontalCellsQty!
+ * @returns {GridCellDataI | undefined} - an object where each key is the number of a cell, and value is an object with cell data
+ */
+export const getGridCellsFullData = ({
+    gridRefChildren,
+    cellsQty,
+    horizontalCellsQty,
+}: GridCellsFullDataParamsI): GridCellDataI | undefined => {
+    if (!gridRefChildren) return undefined;
+    let rowNumber = 1;
+    let rowLength = 1;
+    let columnNumber = 1;
+    return Array.from(gridRefChildren).reduce((aggr, cell, idx) => {
+        if (idx >= cellsQty) return aggr;
+        const cellElem = cell as HTMLElement;
+        const cellData = {
+            id: `cell_i${idx}_n${idx + 1}`,
+            idx: idx,
+            number: Number(cellElem.id) ?? idx + 1,
+            row: rowNumber,
+            column: columnNumber,
+            occupied: false,
+            suspended: false,
+            offsetTop: cellElem.offsetTop ?? 0,
+            offsetLeft: cellElem.offsetLeft ?? 0,
+            offsetWidth: cellElem.offsetWidth ?? 0,
+            offsetHeight: cellElem.offsetHeight ?? 0,
+            clientTop: cellElem.clientTop ?? 0,
+            clientLeft: cellElem.clientLeft ?? 0,
+            clientWidth: cellElem.clientWidth ?? 0,
+            clientHeight: cellElem.clientHeight ?? 0,
+        };
+
+        if (rowLength === horizontalCellsQty) {
+            rowLength = 1;
+            rowNumber += 1;
+            columnNumber = 1;
+        } else {
+            rowLength += 1;
+            columnNumber += 1;
+        }
+
+        return { ...aggr, [cellData.number]: cellData };
+    }, {});
 };
