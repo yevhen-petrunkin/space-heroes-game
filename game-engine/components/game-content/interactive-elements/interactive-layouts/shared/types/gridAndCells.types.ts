@@ -52,3 +52,15 @@ export interface GridCellDataValuesI {
 export interface GridCellDataI {
     [cellNumber: number]: GridCellDataValuesI;
 }
+
+export type SingleCellDataT = {
+    cellNumber: number;
+    cellOffsetTop?: number;
+    cellOffsetLeft?: number;
+    cellOffsetWidth?: number;
+    cellOffsetHeight?: number;
+    cellClientTop?: number;
+    cellClientLeft?: number;
+    cellClientWidth?: number;
+    cellClientHeight?: number;
+};
