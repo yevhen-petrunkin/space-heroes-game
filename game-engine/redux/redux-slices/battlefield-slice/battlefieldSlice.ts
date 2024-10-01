@@ -1,7 +1,7 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
-import { DEFAULT_UNIT_MOVEMENT_SPEED } from '@/game-engine/lib/constants/components/game-content/interactive-elements/unitConstants';
-import { GridCellDataI } from '@/game-engine/lib/types/components/game-content/interactive-elements/gridAndCellsTypes';
+import { GridCellDataI } from '@/game-engine/components/game-content/interactive-elements/interactive-layouts/shared/types/gridAndCells.types';
+import { DEFAULT_UNIT_MOVEMENT_SPEED } from '@/game-engine/shared/constants/unitConstants';
 
 import { BattleFieldInitState } from './battlefieldSlice.types';
 

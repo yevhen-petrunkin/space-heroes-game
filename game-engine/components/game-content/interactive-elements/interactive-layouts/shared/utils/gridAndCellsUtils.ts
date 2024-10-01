@@ -4,7 +4,7 @@ import {
     GridCellsFullDataParamsI,
     GridGeometryData,
     GridGeometryParamsI,
-} from '@/game-engine/lib/types/components/game-content/interactive-elements/gridAndCellsTypes';
+} from '@/game-engine/components/game-content/interactive-elements/interactive-layouts/shared/types/gridAndCells.types';
 
 /** This function is to get raw data about the cells of a game grid (etc. in the Battlefield)
  * @param cellsQty - desired quantity of cells in the grid

@@ -8,20 +8,20 @@ import {
     BATTLEFIELD_GRID_HORIZONTAL_CELLS_QTY,
     BATTLEFIELD_GRID_VERTICAL_CELLS_QTY,
     BATTLEFIELD_UNIT_WIDTH_FACTOR,
-} from '@/game-engine/lib/constants/components/game-content/interactive-elements/battlefieldConstants';
+} from '@/game-engine/components/game-content/interactive-elements/interactive-layouts/components/battlefield/lib/constants/battlefieldConstants';
 import {
     GridCellDataI,
     GridCellRawDataI,
     GridGeometryData,
-} from '@/game-engine/lib/types/components/game-content/interactive-elements/gridAndCellsTypes';
+} from '@/game-engine/components/game-content/interactive-elements/interactive-layouts/shared/types/gridAndCells.types';
 import {
     getGridCellsFullData,
     getGridCellsRawData,
     getGridGeometryData,
-} from '@/game-engine/lib/utils/components/game-content/interactive-elements/gridAndCellsUtils';
-import cn from '@/game-engine/lib/utils/generic/classNames';
+} from '@/game-engine/components/game-content/interactive-elements/interactive-layouts/shared/utils/gridAndCellsUtils';
 import { updateGridCellData } from '@/game-engine/redux/redux-slices/battlefield-slice/battlefieldSlice';
 import { useReduxDispatch, useReduxSelector } from '@/game-engine/redux/redux-store/store';
+import cn from '@/game-engine/shared/utils/classNames';
 
 const Battlefield = () => {
     const gridRef = useRef<HTMLDivElement | null>(null);

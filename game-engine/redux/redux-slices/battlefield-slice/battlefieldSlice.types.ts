@@ -1,4 +1,4 @@
-import { GridCellDataI } from '@/game-engine/lib/types/components/game-content/interactive-elements/gridAndCellsTypes';
+import { GridCellDataI } from '@/game-engine/components/game-content/interactive-elements/interactive-layouts/shared/types/gridAndCells.types';
 
 export interface BattleFieldInitState {
     gridCellData: GridCellDataI | undefined;
