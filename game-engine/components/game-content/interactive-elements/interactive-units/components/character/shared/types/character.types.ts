@@ -52,7 +52,7 @@ export interface CharI {
     charName: CharNameT;
     charCount: number;
     charImages: CharImagesI | undefined;
-    charWidth: number;
+    charWidth: number | null;
     charAction: CharActionI;
     charStats: CharStatsI | undefined;
     startingStats: CharStatsI | undefined;

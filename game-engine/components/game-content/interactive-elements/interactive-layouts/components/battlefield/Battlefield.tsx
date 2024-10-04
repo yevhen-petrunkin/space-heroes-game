@@ -23,6 +23,8 @@ import { updateGridCellData } from '@/game-engine/redux/redux-slices/battlefield
 import { useReduxDispatch, useReduxSelector } from '@/game-engine/redux/redux-store/store';
 import cn from '@/game-engine/shared/utils/classNames';
 
+import CharUnit from '../../../interactive-units/components/character/components/char-unit/CharUnit';
+
 const Battlefield = () => {
     const gridRef = useRef<HTMLDivElement | null>(null);
 
@@ -102,6 +104,13 @@ const Battlefield = () => {
                                     </div>
                                 );
                             })}
+                        <CharUnit
+                            charName='robot'
+                            charCount={20}
+                            charWidth={gridGeometryData.unitWidth}
+                            cellData={undefined}
+                            flipTrigger={1}
+                        />
                     </div>
                 </div>
             </div>

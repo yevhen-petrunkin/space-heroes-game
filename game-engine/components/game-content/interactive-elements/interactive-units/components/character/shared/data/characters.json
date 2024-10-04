@@ -1,0 +1,67 @@
+{
+    "robot": {
+        "id": "001",
+        "charName": "robot",
+        "stats": {
+            "health": 100,
+            "meleeAttack": 10,
+            "rangeAttack": 20,
+            "meleeDefence": 5,
+            "rangeDefence": 10,
+            "count": 1,
+            "status": "idle"
+        },
+        "images": {
+            "idle": {
+                "src": "/characters/robot-images/robot-idle-600.gif",
+                "alt": " idle mode",
+                "duration": 600
+            },
+            "move": {
+                "src": "/characters/robot-images/robot-move-1200.gif",
+                "alt": " moving mode",
+                "duration": 1200
+            },
+            "melee": {
+                "src": "/characters/robot-images/robot-melee-1700.gif",
+                "alt": " melee attack mode",
+                "duration": 1700
+            },
+            "range": {
+                "src": "/characters/robot-images/robot-range-1320.gif",
+                "alt": " shooting mode",
+                "duration": 1320
+            },
+            "hurt": {
+                "src": "/characters/robot-images/robot-hurt-1200.gif",
+                "alt": " damaged mode",
+                "duration": 1200
+            },
+            "die": {
+                "src": "/characters/robot-images/robot-die-1100.gif",
+                "alt": " dying mode",
+                "duration": 1100
+            },
+            "disable": {
+                "src": "/characters/robot-images/robot-disable-1560.gif",
+                "alt": " shutting down mode",
+                "duration": 1560
+            },
+            "enable": {
+                "src": "/characters/robot-images/robot-enable-1200.gif",
+                "alt": " enabling mode",
+                "duration": 1200
+            },
+            "off": {
+                "src": "/characters/robot-images/robot-off-null.png",
+                "alt": " disabled mode",
+                "duration": 0
+            },
+            "dead": {
+                "src": "/characters/robot-images/robot-dead-null.png",
+                "alt": " killed mode",
+                "duration": 0
+            }
+        }
+    }
+}
